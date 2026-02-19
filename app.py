@@ -9,7 +9,7 @@ if __name__=="__main__":
         print("Featurs :- ")
         print(obj.columns)
         print("\nFirst five Rows : \n")
-        print(obj)
+        print(obj) 
 
     except(Exception) as e:
         raise Cu_Exception(e,sys)

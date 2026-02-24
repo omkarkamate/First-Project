@@ -1,0 +1,5 @@
+outs:
+- md5: 2f6bd6bb545a2a3c34fcb61614e99ef0
+  size: 572410
+  hash: md5
+  path: test_data

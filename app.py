@@ -4,65 +4,74 @@ import sys
 import pickle
 import os
 import pandas as pd
+import streamlit as st
 
 if __name__=="__main__":
     try:
 
-        with open("artifacts/Data_Preprocessing.pkl","rb") as f:
-            preprocessor=pickle.load(f) 
-        
-        with open("artifacts/model.pkl","rb") as file:
-            model=pickle.load(file)
 
-        data={}
-        data["Age"]=[input("Enter Age : ")]
-        aa=input("Enter Gender: \n""0->Male\n1->Female\n""Choose an option (0 or 1): " )
-        if(aa==0):
-            gender="Male"
-        else:
-            gender="Female"
-        data["Gender"]=[gender]
-        ab=occupation = input(
-            "Enter Occupation:\n"
-            "0 -> Professional\n"
-            "1 -> Student\n"
-            "2 -> Business Owner\n"
-            "3 -> Freelancer\n"
-            "Choose an option (0-3): "
+
+        with open("artifacts/Data_Preprocessing.pkl", "rb") as f:
+            preprocessor = pickle.load(f)
+
+        with open("artifacts/model.pkl", "rb") as file:
+            model = pickle.load(file)
+
+        st.title("📊 Stress Level Prediction")
+
+        st.markdown("### Enter User Details Below")
+
+
+        age = st.number_input("Age", min_value=10, max_value=100, step=1)
+
+        gender = st.selectbox(
+            "Gender",
+            ["Male", "Female"]
         )
 
-        if(ab==0):
-            Occupation="Professional"
-        elif(ab==1):
-            Occupation="Student"
-        elif(ab==2):
-            Occupation="Business Owner"
-        else:
-            Occupation="Freelancer"
+        occupation = st.selectbox(
+            "Occupation",
+            ["Professional", "Student", "Business Owner", "Freelancer"]
+        )
 
-        data["Occupation"]=[Occupation]
-        ac=input("Enter Device_Type: \n""0->Android\n""1->iOS\n""Choose an option (0 or 1): ")
-        if(ac==0):
-            Device_Type="Android"
-        else:
-            Device_Type="iOS"
+        device_type = st.selectbox(
+            "Device Type",
+            ["Android", "iOS"]
+        )
 
-        data["Device_Type"]=[Device_Type]
-        data["Daily_Phone_Hours"]=[input("Enter Daily_Phone_Hours : ")]
-        data["Social_Media_Hours"]=[input("Enter Social_Media_Hours : ")]
-        data["Work_Productivity_Score"]=[input("Enter Work_Productivity_Score(0 to 10) : ")]
-        data["Sleep_Hours"]=[input("Enter Sleep_Hours : ")]
-        data["Caffeine_Intake_Cups"]=[input("Enter Caffeine_Intake_Cups : ")]
-        data["App_Usage_Count"]=[input("Enter App_Usage_Count : ")]
-        data["Weekend_Screen_Time_Hours"]=[input("Enter Weekend_Screen_Time_Hours : ")]
+        daily_phone_hours = st.number_input("Daily Phone Hours", min_value=0.0,step=0.5)
+        social_media_hours = st.number_input("Social Media Hours", min_value=0.0,step=0.5)
+        work_productivity_score = st.number_input("Work Productivity Score (0-10)", min_value=0.0, max_value=10.0,step=1.0)
+        sleep_hours = st.number_input("Sleep Hours", min_value=0.0,step=0.5)
+        caffeine_intake = st.number_input("Caffeine Intake (Cups)", min_value=0.0,step=1.0)
+        app_usage_count = st.number_input("App Usage Count", min_value=0)
+        weekend_screen_time = st.number_input("Weekend Screen Time Hours", min_value=0.0,step=0.5)
 
-        df=pd.DataFrame(data)
 
-        preprocessed_df=preprocessor.transform(df)
+        if st.button("Predict Stress Level"):
 
-        pred=model.predict(preprocessed_df)
+            data = {
+                "Age": [age],
+                "Gender": [gender],
+                "Occupation": [occupation],
+                "Device_Type": [device_type],
+                "Daily_Phone_Hours": [daily_phone_hours],
+                "Social_Media_Hours": [social_media_hours],
+                "Work_Productivity_Score": [work_productivity_score],
+                "Sleep_Hours": [sleep_hours],
+                "Caffeine_Intake_Cups": [caffeine_intake],
+                "App_Usage_Count": [app_usage_count],
+                "Weekend_Screen_Time_Hours": [weekend_screen_time]
+            }
 
-        print(pred)
+            df = pd.DataFrame(data)
+
+    
+            transformed_data = preprocessor.transform(df)
+
+            prediction = model.predict(transformed_data)
+
+            st.success(f"Predicted Stress Level: {prediction[0]}")
 
         
 

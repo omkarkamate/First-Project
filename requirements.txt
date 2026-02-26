@@ -1,10 +1,5 @@
 pandas
 numpy
 matplotlib
-os
-sys
-pathlib
-matplotlib
-seaborn
 streamlit
 scikit-learn

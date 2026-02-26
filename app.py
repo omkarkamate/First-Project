@@ -9,17 +9,15 @@ import streamlit as st
 if __name__=="__main__":
     try:
 
-
-
         with open("artifacts/Data_Preprocessing.pkl", "rb") as f:
             preprocessor = pickle.load(f)
 
         with open("artifacts/model.pkl", "rb") as file:
             model = pickle.load(file)
 
-        st.title("📊 Stress Level Prediction")
+        st.title(" Stress Level Prediction" )
 
-        st.markdown("### Enter User Details Below")
+        st.markdown(" Enter Your Details Below")
 
 
         age = st.number_input("Age", min_value=10, max_value=100, step=1)
@@ -71,7 +69,18 @@ if __name__=="__main__":
 
             prediction = model.predict(transformed_data)
 
-            st.success(f"Predicted Stress Level: {prediction[0]}")
+            res="hey"
+            if(prediction<4):
+                res="Less Stress"
+            
+            elif(prediction>4 & prediction<6.5):
+                res="Medium Stress"
+            
+            else:
+                res="High Stress"
+
+
+            st.success(f"Predicted Stress Level: {res}")
 
         
 

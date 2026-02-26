@@ -9,6 +9,7 @@ import pickle
 from sklearn.linear_model import LinearRegression
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.tree import DecisionTreeRegressor
+from sklearn.svm import SVR
 from sklearn.metrics import r2_score
 
 @dataclass
@@ -50,6 +51,8 @@ class model_training:
             score=r2_score(y_test,y_test_pred)
 
             report[list(models.keys())[i]]=score
+        
+        
     
         logging.info("applying various model ")
 

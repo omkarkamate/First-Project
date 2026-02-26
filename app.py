@@ -69,16 +69,14 @@ if __name__=="__main__":
 
             prediction = model.predict(transformed_data)
 
-            res="hey"
-            if(prediction<4):
-                res="Less Stress"
-            
-            elif(prediction>4 & prediction<6.5):
-                res="Medium Stress"
-            
-            else:
-                res="High Stress"
+            pred_value = prediction[0]
 
+            if pred_value < 4:
+                res = "Less Stress"
+            elif 4 <= pred_value < 6.5:
+                res = "Medium Stress"
+            else:
+                res = "High Stress"
 
             st.success(f"Predicted Stress Level: {res}")
 

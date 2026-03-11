@@ -1,7 +1,8 @@
 #  Stress Level Prediction Web Application
 
 ##  Live Demo
-🔗 https://your-app-name.streamlit.app
+🔗 https://stress-level-1.onrender.com
+
 
 ---
 
@@ -55,7 +56,6 @@ This project follows a production-level ML architecture:
 
 ## 📈 Model Details
 
-- Model Type: (Linear Regression )
 - Task Type: (Regression)
 - Evaluation Metric: (r2_score)
 - Final Model saved as `model.pkl`

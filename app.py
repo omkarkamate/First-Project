@@ -17,6 +17,8 @@ if __name__=="__main__":
 
         st.title(" Stress Level Prediction" )
 
+        st.title(" omkar kamate " )
+
         st.markdown(" Enter Your Details Below")
 
 

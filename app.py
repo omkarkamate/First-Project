@@ -70,9 +70,9 @@ if __name__=="__main__":
             prediction = model.predict(transformed_data)
             pred_value = prediction[0]
 
-            if pred_value <= 3:
+            if pred_value <= 5:
                 res = "Low Stress"
-            elif pred_value <= 6:
+            elif pred_value <= 7:
                 res = "Medium Stress"
             else:
                 res = "High Stress"

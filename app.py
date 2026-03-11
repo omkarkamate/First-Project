@@ -17,8 +17,6 @@ if __name__=="__main__":
 
         st.title(" Stress Level Prediction" )
 
-        st.title(" omkar kamate " )
-
         st.markdown(" Enter Your Details Below")
 
 
@@ -70,17 +68,17 @@ if __name__=="__main__":
             transformed_data = preprocessor.transform(df)
 
             prediction = model.predict(transformed_data)
-
             pred_value = prediction[0]
 
-            if pred_value < 4:
-                res = "Less Stress"
-            elif 4 <= pred_value < 6.5:
+            if pred_value <= 3:
+                res = "Low Stress"
+            elif pred_value <= 6:
                 res = "Medium Stress"
             else:
                 res = "High Stress"
 
             st.success(f"Predicted Stress Level: {res}")
+            st.write(f"Stress Score: {pred_value:.2f}")
 
         
 

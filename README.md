@@ -87,5 +87,5 @@ This project follows a production-level ML architecture:
 - Error handling with custom exception class
 - Cloud deployment
 
-----
+---
 

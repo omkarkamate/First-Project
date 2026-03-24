@@ -1,4 +1,4 @@
-#  Stress Level Prediction Web Application
+# Stress Level Prediction Web Application
 
 
 ##  Live Demo

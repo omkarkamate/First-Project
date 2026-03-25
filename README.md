@@ -90,3 +90,9 @@ This project follows a production-level ML architecture:
 
 ---
 
+Author
+Omkar Kamate.
+
+Aspiring Data Scientist / Machine Learning Engineer
+
+---

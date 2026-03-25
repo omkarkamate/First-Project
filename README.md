@@ -88,9 +88,12 @@ This project follows a production-level ML architecture:
 - Error handling with custom exception class
 - Cloud deployment
 
----
+----
 
-Author
+
+
+## Author
+
 Omkar Kamate.
 
 Aspiring Data Scientist / Machine Learning Engineer

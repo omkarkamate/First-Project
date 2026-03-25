@@ -92,7 +92,6 @@ This project follows a production-level ML architecture:
 ----
 
 
-
 ## Author
 
 Omkar Kamate.
